@@ -31,3 +31,6 @@ application-local.properties
 # System Files
 .DS_Store
 Thumbs.db
+
+# Log directory
+logs/

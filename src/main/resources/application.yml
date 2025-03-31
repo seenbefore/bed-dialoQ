@@ -12,6 +12,14 @@ spring:
     host: redis
     port: 6379
 
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: logs
+  level:
+    root: INFO
+    com.example.beddialoq: DEBUG
+
 swagger:
   enabled: true
   title: 对话式问卷管理系统 API
