@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/bed_dialoq?useSSL=false&serverTimezone=UTC
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  redis:
+    host: redis
+    port: 6379
+
+swagger:
+  enabled: true
+  title: 对话式问卷管理系统 API
+  description: 基于领域驱动设计的对话式问卷管理系统
+  version: 1.0.0
