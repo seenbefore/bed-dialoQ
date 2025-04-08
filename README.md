@@ -1,14 +1,6 @@
 # 对话式问卷管理系统（BED-DialoQ）
 
-基于领域驱动设计（DDD）的对话式问卷管理系统，采用现代化的技术栈和架构设计。
-
 ## 项目架构
-
-项目采用整洁架构（Clean Architecture）和领域驱动设计（DDD）的思想，主要分为以下几层：
-
-- Application：应用服务层，负责业务流程的编排
-- Domain：领域层，包含核心业务逻辑和领域模型
-- Infrastructure：基础设施层，提供技术实现细节
 
 ## 技术栈
 
@@ -21,24 +13,12 @@
 ## 环境要求
 
 - Docker & Docker Compose
-- JDK 8+
+- JDK 17
 - Maven
 
 ## 项目结构
 
 ```
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── application/    # 应用服务
-│       │       └── domain/         # 领域模型
-│       │       └── infrastructure/ # 基础设施
-│       └── resources/
-│           └── application.yml     # 应用配置文件
-├── docker-compose.yml             # Docker编排配置
-├── Dockerfile                     # Docker构建文件
-└── pom.xml                       # Maven配置文件
 ```
 
 ## 快速开始

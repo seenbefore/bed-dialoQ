@@ -155,6 +155,30 @@
 - 普通索引：status, create_time
 - 复合索引：(response_id, status)
 
+### 2.8 用户表 (user)
+
+| 字段名 | 类型 | 长度 | 允许空 | 默认值 | 说明 |
+|--------|------|------|--------|--------|------|
+| id | varchar | 36 | 否 | - | 主键，用户ID |
+| username | varchar | 50 | 否 | - | 用户名 |
+| password | varchar | 100 | 否 | - | 密码（加密存储） |
+| real_name | varchar | 50 | 是 | null | 真实姓名 |
+| email | varchar | 100 | 是 | null | 电子邮箱 |
+| phone | varchar | 20 | 是 | null | 手机号码 |
+| avatar | varchar | 200 | 是 | null | 头像URL |
+| status | char | 1 | 否 | '1' | 状态：0禁用，1启用 |
+| last_login_time | datetime | - | 是 | null | 最后登录时间 |
+| last_login_ip | varchar | 50 | 是 | null | 最后登录IP |
+| create_time | datetime | - | 否 | CURRENT_TIMESTAMP | 创建时间 |
+| update_time | datetime | - | 否 | CURRENT_TIMESTAMP | 更新时间 |
+| is_deleted | tinyint | 1 | 否 | 0 | 是否删除：0否，1是 |
+
+**索引设计**：
+- 主键索引：id
+- 唯一索引：username, email
+- 普通索引：status, create_time
+- 复合索引：(status, create_time)
+
 ## 3. 表关系说明
 
 ### 3.1 主要关系
@@ -184,6 +208,14 @@
    - 一个选项可以被多个答案选择
    - 每个答案可以选择一个选项（单选题）或多个选项（多选题）
    - 文本题的答案没有关联的选项
+
+7. **用户与问卷**：一对多关系
+   - 一个用户可以创建多个问卷
+   - 每个问卷必须有一个创建者
+
+9. **用户与答卷**：一对多关系
+   - 一个用户可以提交多份答卷
+   - 每份答卷可以有一个提交者（非匿名问卷）
 
 ### 3.2 实体关系图
 
@@ -300,11 +332,6 @@ AI分析任务通过`ai_analysis_task`表进行管理：
    - 对用户个人信息进行加密存储
    - 匿名问卷不记录提交人信息
    - 实现数据脱敏机制
-
-2. **访问控制**：
-   - 基于角色的权限控制
-   - 问卷创建者可以管理自己的问卷
-   - 管理员可以管理所有问卷
 
 ### 6.2 操作安全
 

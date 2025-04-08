@@ -1,16 +1,32 @@
 spring:
   datasource:
-    url: jdbc:mysql://mysql:3306/bed_dialoq?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3307/bed_dialoq?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+    sql-script-encoding: UTF-8
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+      encoding: UTF-8
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
   redis:
-    host: redis
+    host: localhost
     port: 6379
+  main:
+    allow-circular-references: true
+
+server:
+  port: 8081
 
 logging:
   config: classpath:logback-spring.xml
