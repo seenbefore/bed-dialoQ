@@ -151,7 +151,7 @@ public class AuthController {
     public Result<UserDto> updateUser(@RequestBody UserDto userDto) {
         // 确保userDto中有userId
         if (userDto.getId() == null) {
-            return Result.fail(400, "用户ID不能为空");
+            return Result.error(400, "用户ID不能为空");
         }
         UserDto updatedUser = userService.updateUser(userDto);
         return Result.success(updatedUser);

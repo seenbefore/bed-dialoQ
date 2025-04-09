@@ -1,14 +1,41 @@
 # 对话式问卷管理系统（BED-DialoQ）
 
+基于领域驱动设计的对话式问卷管理系统后端服务，使用Spring Boot开发。
+
 ## 项目架构
 
 ## 技术栈
 
-- 后端框架：Spring Boot
-- 数据库：MySQL 8.0
-- 缓存：Redis 6.2
-- 容器化：Docker & Docker Compose
-- API文档：Swagger
+- Spring Boot 3.1.0
+- Spring Data JPA
+- Spring Data Redis
+- MySQL 8.x
+- OpenAPI (Swagger)
+
+## 功能特性
+
+- 用户管理
+- 问卷设计与管理
+- 答卷收集与统计
+- AI辅助分析
+
+## 系统配置
+
+### 日期时间格式处理
+
+系统对日期时间的处理采用统一格式：`yyyy-MM-dd HH:mm:ss`。
+
+- 通过`JacksonConfig`配置类统一处理JSON序列化和反序列化中的LocalDateTime格式
+- 服务实现类中使用相同的DateTimeFormatter处理LocalDateTime转换
+
+### 状态码处理
+
+系统中的状态码处理规则：
+
+- 数据库中状态码使用简短的字符值（如"0", "1", "2"）
+- 后端枚举类`QuestionnaireStatus`定义了这些状态码和描述
+- 前端枚举类`QuestionnaireStatusEnum`使用更具可读性的名称（如"DRAFT", "PUBLISHED", "OFFLINE"）
+- 后端在接收前端请求时会自动将状态名转换为对应的状态码
 
 ## 环境要求
 
@@ -17,9 +44,6 @@
 - Maven
 
 ## 项目结构
-
-```
-```
 
 ## 快速开始
 
