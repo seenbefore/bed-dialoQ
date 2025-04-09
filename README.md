@@ -55,8 +55,8 @@ docker-compose up -d
 ```
 
 3. 服务访问信息
-- 应用服务：http://localhost:8080
-- Swagger API文档：http://localhost:8080/swagger-ui.html
+- 应用服务：http://localhost:8081
+- Swagger API文档：http://localhost:8081/swagger-ui.html
 - MySQL：localhost:3307（外部访问端口）
 - Redis：localhost:6379
 
